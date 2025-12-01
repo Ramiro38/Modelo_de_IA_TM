@@ -18,7 +18,7 @@ st.write("Usa la cámara para saber si es un perro o un gato.")
 @st.cache_resource
 def carga_modelo():
     # Cargamos el modelo
-    modelo = keras.models.load_model("st-app/keras_model.h5", compile=False)
+    modelo = keras.models.load_model("app/keras_model.h5", compile=False)
     # Carga las etiquetas de las clases
     clases = open("st-app/labels.txt", "r").readlines()
     return modelo, clases
@@ -45,18 +45,18 @@ if imagen_camara is not None:
     lote_imagenes[0] = normalizada_imagen_array
 
 # Predicción
-resultados= mi_modelo.predict(lote_imagenes)
-indice = np.argmax(resultados[0])
-etiqueta = nombre_clases[indice]
-probabilidad = resultados[0][indice]
+    resultados= mi_modelo.predict(lote_imagenes)
+    indice = np.argmax(resultados[0])
+    etiqueta = nombre_clases[indice]
+    probabilidad = resultados[0][indice]
 
-st.divider() # Línea separadora visual
+    st.divider() # Línea separadora visual
 
-if "Perro" in etiqueta:
+    if "Perro" in etiqueta:
         st.success(f"¡Es un **PERRO**! 🐶")
         st.balloons() # Efecto visual
-else:
+    else:
         st.success(f"¡Es un **GATO**! 🐱")
         st.snow() # Efecto visual
 
-st.write(f"Estoy un {probabilidad:.2%} seguro.")
+    st.write(f"Estoy un {probabilidad:.2%} seguro.")
