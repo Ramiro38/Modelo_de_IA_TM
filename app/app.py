@@ -45,12 +45,12 @@ if imagen_camara is not None:
     lote_imagenes[0] = normalizada_imagen_array
 
 # Predicción
-    resultados= mi_modelo.predict(lote_imagenes)
-    indice = np.argmax(resultados[0])
-    etiqueta = nombre_clases[indice]
-    probabilidad = resultados[0][indice]
+resultados= mi_modelo.predict(lote_imagenes)
+indice = np.argmax(resultados[0])
+etiqueta = nombre_clases[indice]
+probabilidad = resultados[0][indice]
 
-    st.divider() # Línea separadora visual
+st.divider() # Línea separadora visual
 
 if "Perro" in etiqueta:
         st.success(f"¡Es un **PERRO**! 🐶")
